@@ -12,18 +12,22 @@ int main() {
     int posicionamentoVertical[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 
     //Declaração da matriz do tabuleiro
-    int tabuleiro[10][10] = {
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 3, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 3, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 3, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 3, 3, 3, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
-    };
+    int tabuleiro[10][10] = {0};
+
+    // Posicionamento dos navios
+    // Navio 1
+    int inicioLinhaNavio1 = 2;
+    int inicioColunaNavio1 = 2;
+    for (int i = 0; i < 3; i++) {
+        tabuleiro[inicioLinhaNavio1 + i][inicioColunaNavio1] = 3;
+    }
+
+    // Navio 2
+    int inicioLinhaNavio2 = 6;
+    int inicioColunaNavio2 = 4;
+    for (int i = 0; i < 3; i++) {
+        tabuleiro[inicioLinhaNavio2][inicioColunaNavio2 + i] = 3;
+    }
     
     // Exibição do tabuleiro
     printf("TABULEIRO DE BATALHA NÁVAL\n");
