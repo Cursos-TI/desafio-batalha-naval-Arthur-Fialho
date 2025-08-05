@@ -4,13 +4,16 @@
 // Este código inicial serve como base para o desenvolvimento do sistema de Batalha Naval.
 // Nível Aventureiro
 
+#define LINHAS_TABULEIRO 10
+#define COLUNAS_TABULEIRO 10
+
 int main() {
     // Declaração das coordenadas
-    char posicionamentoHorizontal[10] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'};
-    int posicionamentoVertical[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    char posicionamentoHorizontal[COLUNAS_TABULEIRO] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'};
+    int posicionamentoVertical[LINHAS_TABULEIRO] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 
     //Declaração da matriz do tabuleiro
-    int tabuleiro[10][10] = {0};
+    int tabuleiro[LINHAS_TABULEIRO][COLUNAS_TABULEIRO] = {0};
 
     // Posicionamento dos navios
     // Navio 1 - vertical
@@ -30,18 +33,14 @@ int main() {
     // Navio 3 - diagonal
     int inicioLinhaNavio3 = 1;
     int inicioColunaNavio3 = 5;
-    for (int i = 0; i < 1; i++) {
-        for (int j = 0, k = 0; j < 3; j++, k++){
-            tabuleiro[inicioLinhaNavio3 + j][inicioColunaNavio3 + k] = 3;
-        }
+    for (int j = 0, k = 0; j < 3; j++, k++) {
+        tabuleiro[inicioLinhaNavio3 + j][inicioColunaNavio3 + k] = 3;
     }
     // Navio 4 - diagonal
     int inicioLinhaNavio4 = 9;
     int inicioColunaNavio4 = 0;
-    for (int i = 0; i < 1; i++) {
-        for (int j = 0, k = 0; j < 3; j++, k++){
-            tabuleiro[inicioLinhaNavio4 - j][inicioColunaNavio4 + k] = 3;
-        }
+    for (int j = 0, k = 0; j < 3; j++, k++) {
+        tabuleiro[inicioLinhaNavio4 - j][inicioColunaNavio4 + k] = 3;
     }
 
     // Exibição do tabuleiro
