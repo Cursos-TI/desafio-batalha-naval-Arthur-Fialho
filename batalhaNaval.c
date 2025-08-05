@@ -2,11 +2,9 @@
 
 // Desafio Batalha Naval - MateCheck
 // Este código inicial serve como base para o desenvolvimento do sistema de Batalha Naval.
-// Nível Novato
+// Nível Aventureiro
 
 int main() {
-    // Nível Novato - Posicionamento dos Navios
-
     // Declaração das coordenadas
     char posicionamentoHorizontal[10] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'};
     int posicionamentoVertical[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
@@ -15,20 +13,37 @@ int main() {
     int tabuleiro[10][10] = {0};
 
     // Posicionamento dos navios
-    // Navio 1
+    // Navio 1 - vertical
     int inicioLinhaNavio1 = 2;
     int inicioColunaNavio1 = 2;
     for (int i = 0; i < 3; i++) {
         tabuleiro[inicioLinhaNavio1 + i][inicioColunaNavio1] = 3;
     }
 
-    // Navio 2
+    // Navio 2 - horizontal
     int inicioLinhaNavio2 = 6;
     int inicioColunaNavio2 = 4;
     for (int i = 0; i < 3; i++) {
         tabuleiro[inicioLinhaNavio2][inicioColunaNavio2 + i] = 3;
     }
-    
+
+    // Navio 3 - diagonal
+    int inicioLinhaNavio3 = 1;
+    int inicioColunaNavio3 = 5;
+    for (int i = 0; i < 1; i++) {
+        for (int j = 0, k = 0; j < 3; j++, k++){
+            tabuleiro[inicioLinhaNavio3 + j][inicioColunaNavio3 + k] = 3;
+        }
+    }
+    // Navio 4 - diagonal
+    int inicioLinhaNavio4 = 9;
+    int inicioColunaNavio4 = 0;
+    for (int i = 0; i < 1; i++) {
+        for (int j = 0, k = 0; j < 3; j++, k++){
+            tabuleiro[inicioLinhaNavio4 - j][inicioColunaNavio4 + k] = 3;
+        }
+    }
+
     // Exibição do tabuleiro
     printf("TABULEIRO DE BATALHA NÁVAL\n");
     printf("\n"); // Pula mais uma linha
@@ -54,11 +69,6 @@ int main() {
     }
 
     printf("\n");
-
-    // Nível Aventureiro - Expansão do Tabuleiro e Posicionamento Diagonal
-    // Sugestão: Expanda o tabuleiro para uma matriz 10x10.
-    // Sugestão: Posicione quatro navios no tabuleiro, incluindo dois na diagonal.
-    // Sugestão: Exiba o tabuleiro completo no console, mostrando 0 para posições vazias e 3 para posições ocupadas.
 
     // Nível Mestre - Habilidades Especiais com Matrizes
     // Sugestão: Crie matrizes para representar habilidades especiais como cone, cruz, e octaedro.
