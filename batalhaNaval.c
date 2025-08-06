@@ -6,6 +6,9 @@
 
 #define LINHAS_TABULEIRO 10
 #define COLUNAS_TABULEIRO 10
+#define AGUA 0
+#define NAVIO 3
+#define TAMANHO_NAVIO 3
 
 int main() {
     // Declaração das coordenadas
@@ -13,41 +16,41 @@ int main() {
     int posicionamentoVertical[LINHAS_TABULEIRO] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 
     //Declaração da matriz do tabuleiro
-    int tabuleiro[LINHAS_TABULEIRO][COLUNAS_TABULEIRO] = {0};
+    int tabuleiro[LINHAS_TABULEIRO][COLUNAS_TABULEIRO] = {AGUA};
 
     // Posicionamento dos navios
     // Navio 1 - vertical
     int inicioLinhaNavio1 = 2;
     int inicioColunaNavio1 = 2;
-    for (int i = 0; i < 3; i++) {
-        tabuleiro[inicioLinhaNavio1 + i][inicioColunaNavio1] = 3;
+    for (int i = 0; i < TAMANHO_NAVIO; i++) {
+        tabuleiro[inicioLinhaNavio1 + i][inicioColunaNavio1] = NAVIO;
     }
 
     // Navio 2 - horizontal
     int inicioLinhaNavio2 = 6;
     int inicioColunaNavio2 = 4;
-    for (int i = 0; i < 3; i++) {
-        tabuleiro[inicioLinhaNavio2][inicioColunaNavio2 + i] = 3;
+    for (int i = 0; i < TAMANHO_NAVIO; i++) {
+        tabuleiro[inicioLinhaNavio2][inicioColunaNavio2 + i] = NAVIO;
     }
 
     // Navio 3 - diagonal
     int inicioLinhaNavio3 = 1;
     int inicioColunaNavio3 = 5;
-    for (int j = 0, k = 0; j < 3; j++, k++) {
-        tabuleiro[inicioLinhaNavio3 + j][inicioColunaNavio3 + k] = 3;
+    for (int j = 0, k = 0; j < TAMANHO_NAVIO; j++, k++) {
+        tabuleiro[inicioLinhaNavio3 + j][inicioColunaNavio3 + k] = NAVIO;
     }
     // Navio 4 - diagonal
     int inicioLinhaNavio4 = 9;
     int inicioColunaNavio4 = 0;
-    for (int j = 0, k = 0; j < 3; j++, k++) {
-        tabuleiro[inicioLinhaNavio4 - j][inicioColunaNavio4 + k] = 3;
+    for (int j = 0, k = 0; j < TAMANHO_NAVIO; j++, k++) {
+        tabuleiro[inicioLinhaNavio4 - j][inicioColunaNavio4 + k] = NAVIO;
     }
 
     // Exibição do tabuleiro
     printf("TABULEIRO DE BATALHA NÁVAL\n");
     printf("\n"); // Pula mais uma linha
 
-    for(int i = 0; i < 10; i++){
+    for(int i = 0; i < COLUNAS_TABULEIRO; i++){
         if(i == 0){
         printf("    %c ", posicionamentoHorizontal[i]); // Alinhamento das letras com o tabuleiro na letra A
         }else{
@@ -55,14 +58,14 @@ int main() {
         }
     }
 
-    for(int i = 0; i < 10; i++){
+    for(int i = 0; i < LINHAS_TABULEIRO; i++){
         printf("\n");
         if(i == 9){
         printf("%d ", posicionamentoVertical[i]); // Aqui na exibição do 10 é excluido o espaço antes do numero na exibição
         }else{
             printf(" %d ", posicionamentoVertical[i]); // Alinhamento dos numeros das posições no tabulero, por causa do 10 ficaria distorcido a tabela
         }
-        for(int j = 0; j < 10; j++){
+        for(int j = 0; j < LINHAS_TABULEIRO; j++){
             printf(" %d ", tabuleiro[i][j]);
         }
     }
