@@ -21,29 +21,53 @@ int main() {
     // Posicionamento dos navios
     // Navio 1 - vertical
     int inicioLinhaNavio1 = 2;
-    int inicioColunaNavio1 = 2;
-    for (int i = 0; i < TAMANHO_NAVIO; i++) {
-        tabuleiro[inicioLinhaNavio1 + i][inicioColunaNavio1] = NAVIO;
+    int inicioColunaNavio1 = 3;
+    if(inicioColunaNavio1 >= COLUNAS_TABULEIRO || inicioColunaNavio1 < 0 && inicioLinhaNavio1 >= LINHAS_TABULEIRO || inicioLinhaNavio1 < 0){
+        printf("ERRO: Fora dos limites do tabuleiro!\n");
+    }else if((inicioLinhaNavio1 + TAMANHO_NAVIO -1) >= LINHAS_TABULEIRO){
+        printf("ERRO: Navio ultrapassa os limites do tabuleiro!\n");
+    }else{
+        for (int i = 0; i < TAMANHO_NAVIO; i++) {
+            tabuleiro[inicioLinhaNavio1 + i][inicioColunaNavio1] = NAVIO;
+        }
     }
 
     // Navio 2 - horizontal
     int inicioLinhaNavio2 = 6;
     int inicioColunaNavio2 = 4;
-    for (int i = 0; i < TAMANHO_NAVIO; i++) {
-        tabuleiro[inicioLinhaNavio2][inicioColunaNavio2 + i] = NAVIO;
+    if(inicioColunaNavio2 >= COLUNAS_TABULEIRO || inicioColunaNavio2 < 0 && inicioLinhaNavio2 >= LINHAS_TABULEIRO || inicioLinhaNavio2 < 0){
+        printf("ERRO: Fora dos limites do tabuleiro!\n");
+    }else if((inicioColunaNavio2 + TAMANHO_NAVIO -1) >= LINHAS_TABULEIRO){
+        printf("ERRO: Navio ultrapassa os limites do tabuleiro!\n");
+    }else{
+        for (int i = 0; i < TAMANHO_NAVIO; i++) {
+            tabuleiro[inicioLinhaNavio2][inicioColunaNavio2 + i] = NAVIO;
+        }
     }
 
     // Navio 3 - diagonal
-    int inicioLinhaNavio3 = 1;
-    int inicioColunaNavio3 = 5;
-    for (int j = 0, k = 0; j < TAMANHO_NAVIO; j++, k++) {
-        tabuleiro[inicioLinhaNavio3 + j][inicioColunaNavio3 + k] = NAVIO;
+    int inicioLinhaNavio3 = 3;
+    int inicioColunaNavio3 = 7;
+    if(inicioColunaNavio3 >= COLUNAS_TABULEIRO || inicioColunaNavio3 < 0 && inicioLinhaNavio3 >= LINHAS_TABULEIRO || inicioLinhaNavio3 < 0){
+        printf("ERRO: Fora dos limites do tabuleiro!\n");
+    }else if((inicioLinhaNavio3 + TAMANHO_NAVIO -1) >= LINHAS_TABULEIRO || (inicioColunaNavio3 + TAMANHO_NAVIO -1) >= COLUNAS_TABULEIRO){
+        printf("ERRO: Navio ultrapassa os limites do tabuleiro!\n");
+    }else{
+        for (int j = 0, k = 0; j < TAMANHO_NAVIO; j++, k++) {
+            tabuleiro[inicioLinhaNavio3 + j][inicioColunaNavio3 + k] = NAVIO;
+        }
     }
     // Navio 4 - diagonal
-    int inicioLinhaNavio4 = 9;
+    int inicioLinhaNavio4 = 2;
     int inicioColunaNavio4 = 0;
-    for (int j = 0, k = 0; j < TAMANHO_NAVIO; j++, k++) {
-        tabuleiro[inicioLinhaNavio4 - j][inicioColunaNavio4 + k] = NAVIO;
+    if(inicioColunaNavio4 >= COLUNAS_TABULEIRO || inicioColunaNavio4 < 0 && inicioLinhaNavio4 >= LINHAS_TABULEIRO || inicioLinhaNavio4 < 0){
+        printf("ERRO: Fora dos limites do tabuleiro!\n");
+    }else if((inicioLinhaNavio4 + TAMANHO_NAVIO -1) >= LINHAS_TABULEIRO || (inicioColunaNavio4 + TAMANHO_NAVIO -1) >= COLUNAS_TABULEIRO){
+        printf("ERRO: Navio ultrapassa os limites do tabuleiro!\n");
+    }else{
+        for (int j = 0, k = 0; j < TAMANHO_NAVIO; j++, k++) {
+            tabuleiro[inicioLinhaNavio4 - j][inicioColunaNavio4 + k] = NAVIO;
+        }
     }
 
     // Exibição do tabuleiro
