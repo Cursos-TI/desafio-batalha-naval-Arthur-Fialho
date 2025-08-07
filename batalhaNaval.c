@@ -2,13 +2,18 @@
 
 // Desafio Batalha Naval - MateCheck
 // Este código inicial serve como base para o desenvolvimento do sistema de Batalha Naval.
-// Nível Aventureiro
+// Nível Mestre
 
 #define LINHAS_TABULEIRO 10
 #define COLUNAS_TABULEIRO 10
 #define AGUA 0
 #define NAVIO 3
 #define TAMANHO_NAVIO 3
+#define ATK_CRUZ 1
+#define ATK_OCTAEDRO 4
+#define ATK_CONE 7
+#define LINHAS_ATAQUES 3
+#define COLUNAS_ATAQUES 5
 
 int main() {
     // Declaração das coordenadas
@@ -21,7 +26,7 @@ int main() {
     // Posicionamento dos navios
     // Navio 1 - vertical
     int inicioLinhaNavio1 = 6;
-    int inicioColunaNavio1 = 5;
+    int inicioColunaNavio1 = 4;
     int sobreposicaoNavio1 = 0; // Flag para sinalizar se há sobreposição
 
     // Verificações para posicionar navios
@@ -131,22 +136,75 @@ int main() {
             }
     }
 
+    
+    // Nível Mestre - Habilidades Especiais com Matrizes
+    
+    int atk_cone[LINHAS_ATAQUES][COLUNAS_ATAQUES] = {AGUA};
+    int centro_cone = COLUNAS_ATAQUES / 2;
+    int inicioAtaqueConeLinha = 0;
+    int inicioAtaqueConeColuna = 5;
+    
+    for(int i = 0; i < LINHAS_ATAQUES; i++){
+        for(int j = 0; j < COLUNAS_ATAQUES; j++){
+            if (j >= centro_cone - i && j <= centro_cone + i) {
+                tabuleiro[inicioAtaqueConeLinha + i][inicioAtaqueConeColuna + j] = atk_cone[i][j] = ATK_CONE;
+            }
+             
+        }
+    }
+
+    int atk_octaedro[LINHAS_ATAQUES][COLUNAS_ATAQUES] = {AGUA};
+    int centro_octaedro = COLUNAS_ATAQUES / 2;
+    int inicioAtaqueOctaedroLinha = 4;
+    int inicioAtaqueOctaedroColuna = 0;
+
+    for (int i = 0; i < LINHAS_ATAQUES; i++) {
+        if (i == 0 || i == 2) {
+            tabuleiro[inicioAtaqueOctaedroLinha + i][inicioAtaqueOctaedroColuna + centro_octaedro] = atk_octaedro[i][centro_octaedro] = ATK_OCTAEDRO;
+        }
+    
+        else if (i == 1) {
+            for (int j = 0; j < COLUNAS_ATAQUES; j++) {
+                if (j >= centro_octaedro - 1 && j <= centro_octaedro + 1) {
+                    tabuleiro[inicioAtaqueOctaedroLinha + i][inicioAtaqueOctaedroColuna + j] = atk_octaedro[i][j] = ATK_OCTAEDRO;
+                }
+            }
+        }
+    }
+
+    int atk_cruz[LINHAS_ATAQUES][COLUNAS_ATAQUES] = {AGUA};
+    int centro_cruz = COLUNAS_ATAQUES / 2;
+    int inicioAtaqueCruzLinha = 6;
+    int inicioAtaqueCruzColuna = 5;
+
+    for (int i = 0; i < LINHAS_ATAQUES; i++) {
+        if (i == 0 || i == 2) {
+            tabuleiro[inicioAtaqueCruzLinha + i][inicioAtaqueCruzColuna + centro_cruz] = atk_cruz[i][centro_cruz] = ATK_CRUZ;
+        }
+    
+        else if (i == 1) {
+            for (int j = 0; j < COLUNAS_ATAQUES; j++) {
+                tabuleiro[inicioAtaqueCruzLinha + i][inicioAtaqueCruzColuna + j] = atk_octaedro[i][j] = ATK_CRUZ;
+            }
+        }
+    }
+    
     // Exibição do tabuleiro
     printf("TABULEIRO DE BATALHA NÁVAL\n");
     printf("\n"); // Pula mais uma linha
-
+    
     for(int i = 0; i < COLUNAS_TABULEIRO; i++){
         if(i == 0){
-        printf("    %c ", posicionamentoHorizontal[i]); // Alinhamento das letras com o tabuleiro na letra A
+            printf("    %c ", posicionamentoHorizontal[i]); // Alinhamento das letras com o tabuleiro na letra A
         }else{
             printf(" %c ", posicionamentoHorizontal[i]); // Alinhamento das demais letras
         }
     }
-
+    
     for(int i = 0; i < LINHAS_TABULEIRO; i++){
         printf("\n");
         if(i == 9){
-        printf("%d ", posicionamentoVertical[i]); // Aqui na exibição do 10 é excluido o espaço antes do numero na exibição
+            printf("%d ", posicionamentoVertical[i]); // Aqui na exibição do 10 é excluido o espaço antes do numero na exibição
         }else{
             printf(" %d ", posicionamentoVertical[i]); // Alinhamento dos numeros das posições no tabulero, por causa do 10 ficaria distorcido a tabela
         }
@@ -156,27 +214,6 @@ int main() {
     }
 
     printf("\n");
-
-    // Nível Mestre - Habilidades Especiais com Matrizes
-    // Sugestão: Crie matrizes para representar habilidades especiais como cone, cruz, e octaedro.
-    // Sugestão: Utilize estruturas de repetição aninhadas para preencher as áreas afetadas por essas habilidades no tabuleiro.
-    // Sugestão: Exiba o tabuleiro com as áreas afetadas, utilizando 0 para áreas não afetadas e 1 para áreas atingidas.
-
-    // Exemplos de exibição das habilidades:
-    // Exemplo para habilidade em cone:
-    // 0 0 1 0 0
-    // 0 1 1 1 0
-    // 1 1 1 1 1
-    
-    // Exemplo para habilidade em octaedro:
-    // 0 0 1 0 0
-    // 0 1 1 1 0
-    // 0 0 1 0 0
-
-    // Exemplo para habilidade em cruz:
-    // 0 0 1 0 0
-    // 1 1 1 1 1
-    // 0 0 1 0 0
 
     return 0;
 }
