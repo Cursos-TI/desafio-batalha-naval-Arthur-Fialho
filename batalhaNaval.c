@@ -30,7 +30,7 @@ int main() {
     int sobreposicaoNavio1 = 0; // Flag para sinalizar se há sobreposição
 
     // Verificações para posicionar navios
-    if((inicioColunaNavio1 >= COLUNAS_TABULEIRO || inicioColunaNavio1 < 0) && (inicioLinhaNavio1 >= LINHAS_TABULEIRO || inicioLinhaNavio1 < 0)){
+    if((inicioColunaNavio1 >= COLUNAS_TABULEIRO || inicioColunaNavio1 < 0) || (inicioLinhaNavio1 >= LINHAS_TABULEIRO || inicioLinhaNavio1 < 0)){
         printf("ERRO: Navio 1 fora dos limites do tabuleiro!\n");
     }else if((inicioLinhaNavio1 + TAMANHO_NAVIO -1) >= LINHAS_TABULEIRO){
         printf("ERRO: Navio1 ultrapassa os limites do tabuleiro!\n");
@@ -58,7 +58,7 @@ int main() {
     int sobreposicaoNavio2 = 0; // Flag para sinalizar se há sobreposição
 
     // Verificações para posicionar navios
-    if((inicioColunaNavio2 >= COLUNAS_TABULEIRO || inicioColunaNavio2 < 0) && (inicioLinhaNavio2 >= LINHAS_TABULEIRO || inicioLinhaNavio2 < 0)){
+    if((inicioColunaNavio2 >= COLUNAS_TABULEIRO || inicioColunaNavio2 < 0) || (inicioLinhaNavio2 >= LINHAS_TABULEIRO || inicioLinhaNavio2 < 0)){
         printf("ERRO: Navio 2 fora dos limites do tabuleiro!\n");
     }else if((inicioColunaNavio2 + TAMANHO_NAVIO -1) >= COLUNAS_TABULEIRO){
         printf("ERRO: Navio2 ultrapassa os limites do tabuleiro!\n");
@@ -87,7 +87,7 @@ int main() {
     int sobreposicaoNavio3 = 0; // Flag para sinalizar se há sobreposição
 
     // Verificações para posicionar navios
-    if((inicioColunaNavio3 >= COLUNAS_TABULEIRO || inicioColunaNavio3 < 0) && (inicioLinhaNavio3 >= LINHAS_TABULEIRO || inicioLinhaNavio3 < 0)){
+    if((inicioColunaNavio3 >= COLUNAS_TABULEIRO || inicioColunaNavio3 < 0) || (inicioLinhaNavio3 >= LINHAS_TABULEIRO || inicioLinhaNavio3 < 0)){
         printf("ERRO: Navio 3 fora dos limites do tabuleiro!\n");
     }else if(((inicioLinhaNavio3 + TAMANHO_NAVIO -1) >= LINHAS_TABULEIRO) || ((inicioColunaNavio3 + TAMANHO_NAVIO -1) >= COLUNAS_TABULEIRO)){
         printf("ERRO: Navio3 ultrapassa os limites do tabuleiro!\n");
@@ -114,7 +114,7 @@ int main() {
     int sobreposicaoNavio4 = 0; // Flag para sinalizar se há sobreposição
 
     // Verificações para posicionar navios
-    if((inicioColunaNavio4 >= COLUNAS_TABULEIRO || inicioColunaNavio4 < 0) && (inicioLinhaNavio4 >= LINHAS_TABULEIRO || inicioLinhaNavio4 < 0)){
+    if((inicioColunaNavio4 >= COLUNAS_TABULEIRO || inicioColunaNavio4 < 0) || (inicioLinhaNavio4 >= LINHAS_TABULEIRO || inicioLinhaNavio4 < 0)){
         printf("ERRO: Navio 4 fora dos limites do tabuleiro!\n");
     }else if((inicioLinhaNavio4 >= LINHAS_TABULEIRO) || ((inicioColunaNavio4 + TAMANHO_NAVIO -1) >= COLUNAS_TABULEIRO) || (inicioLinhaNavio4 - TAMANHO_NAVIO) < 0){
         printf("ERRO: Navio4 ultrapassa os limites do tabuleiro!\n");
@@ -184,7 +184,7 @@ int main() {
     
         else if (i == 1) {
             for (int j = 0; j < COLUNAS_ATAQUES; j++) {
-                tabuleiro[inicioAtaqueCruzLinha + i][inicioAtaqueCruzColuna + j] = atk_octaedro[i][j] = ATK_CRUZ;
+                tabuleiro[inicioAtaqueCruzLinha + i][inicioAtaqueCruzColuna + j] = atk_cruz[i][j] = ATK_CRUZ;
             }
         }
     }
