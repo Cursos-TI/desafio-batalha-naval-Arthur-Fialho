@@ -147,9 +147,13 @@ int main() {
     for(int i = 0; i < LINHAS_ATAQUES; i++){
         for(int j = 0; j < COLUNAS_ATAQUES; j++){
             if (j >= centro_cone - i && j <= centro_cone + i) {
-                tabuleiro[inicioAtaqueConeLinha + i][inicioAtaqueConeColuna + j] = atk_cone[i][j] = ATK_CONE;
-            }
-             
+                // Verificação de limites antes de modificar o tabuleiro
+                if(inicioAtaqueConeLinha + i >= 0 && inicioAtaqueConeLinha + i < LINHAS_TABULEIRO && inicioAtaqueConeColuna + j >= 0 && inicioAtaqueConeColuna + j < COLUNAS_TABULEIRO){
+                    tabuleiro[inicioAtaqueConeLinha + i][inicioAtaqueConeColuna + j] = atk_cone[i][j] = ATK_CONE;
+                }else{
+                    printf("Ataque Cone excede os limites do tabuleiro\n");
+                }
+            }          
         }
     }
 
@@ -159,14 +163,33 @@ int main() {
     int inicioAtaqueOctaedroColuna = 0;
 
     for (int i = 0; i < LINHAS_ATAQUES; i++) {
+        // Para as linhas de topo e base (i=0 e i=2)
         if (i == 0 || i == 2) {
-            tabuleiro[inicioAtaqueOctaedroLinha + i][inicioAtaqueOctaedroColuna + centro_octaedro] = atk_octaedro[i][centro_octaedro] = ATK_OCTAEDRO;
+            int linha_alvo = inicioAtaqueOctaedroLinha + i;
+            int coluna_alvo = inicioAtaqueOctaedroColuna + centro_octaedro;
+
+            // Verificação de limites antes de modificar o tabuleiro
+            if (linha_alvo >= 0 && linha_alvo < LINHAS_TABULEIRO &&
+                coluna_alvo >= 0 && coluna_alvo < COLUNAS_TABULEIRO) {
+                tabuleiro[linha_alvo][coluna_alvo] = ATK_OCTAEDRO;
+            } else {
+                printf("Ataque de Octaedro excede os limites do tabuleiro!\n");
+            }
         }
-    
+
         else if (i == 1) {
             for (int j = 0; j < COLUNAS_ATAQUES; j++) {
                 if (j >= centro_octaedro - 1 && j <= centro_octaedro + 1) {
-                    tabuleiro[inicioAtaqueOctaedroLinha + i][inicioAtaqueOctaedroColuna + j] = atk_octaedro[i][j] = ATK_OCTAEDRO;
+                    int linha_alvo = inicioAtaqueOctaedroLinha + i;
+                    int coluna_alvo = inicioAtaqueOctaedroColuna + j;
+                    
+                    // Verificação de limites antes de modificar o tabuleiro
+                    if (linha_alvo >= 0 && linha_alvo < LINHAS_TABULEIRO &&
+                        coluna_alvo >= 0 && coluna_alvo < COLUNAS_TABULEIRO) {
+                        tabuleiro[linha_alvo][coluna_alvo] = ATK_OCTAEDRO;
+                    } else {
+                        printf("Ataque de Octaedro excede os limites do tabuleiro!\n");
+                    }
                 }
             }
         }
@@ -178,13 +201,32 @@ int main() {
     int inicioAtaqueCruzColuna = 5;
 
     for (int i = 0; i < LINHAS_ATAQUES; i++) {
+        // Para as linhas de topo e base (i=0 e i=2)
         if (i == 0 || i == 2) {
-            tabuleiro[inicioAtaqueCruzLinha + i][inicioAtaqueCruzColuna + centro_cruz] = atk_cruz[i][centro_cruz] = ATK_CRUZ;
+            int linha_alvo = inicioAtaqueCruzLinha + i;
+            int coluna_alvo = inicioAtaqueCruzColuna + centro_cruz;
+            
+            // Verificação de limites antes de modificar o tabuleiro
+            if (linha_alvo >= 0 && linha_alvo < LINHAS_TABULEIRO &&
+                coluna_alvo >= 0 && coluna_alvo < COLUNAS_TABULEIRO) {
+                tabuleiro[linha_alvo][coluna_alvo] = ATK_CRUZ;
+            } else {
+                printf("Ataque de Cruz excede os limites do tabuleiro!\n");
+            }
         }
-    
+        
         else if (i == 1) {
             for (int j = 0; j < COLUNAS_ATAQUES; j++) {
-                tabuleiro[inicioAtaqueCruzLinha + i][inicioAtaqueCruzColuna + j] = atk_cruz[i][j] = ATK_CRUZ;
+                int linha_alvo = inicioAtaqueCruzLinha + i;
+                int coluna_alvo = inicioAtaqueCruzColuna + j;
+                
+                // Verificação de limites antes de modificar o tabuleiro
+                if (linha_alvo >= 0 && linha_alvo < LINHAS_TABULEIRO &&
+                    coluna_alvo >= 0 && coluna_alvo < COLUNAS_TABULEIRO) {
+                    tabuleiro[linha_alvo][coluna_alvo] = ATK_CRUZ;
+                } else {
+                    printf("Ataque de Cruz excede os limites do tabuleiro!\n");
+                }
             }
         }
     }
